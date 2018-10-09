@@ -23,19 +23,19 @@
 #### 离散傅里叶级数变换的推导
 只有DFT对于数字信号处理有实用价值。由于取样结果，前三种形式都能变为第四种。
 
-为了更清楚地表示第三种傅里叶变换的周期性，在符号上加以周期性标识“$\sim$”：$$\widetilde X(e^{j\omega})=\sum_{n=-\infty}^\infty x(n)e^{-j\omega n}\rightarrow\sum_{n=0}^{N-1}x(n)e^{i\omega n}.$$离散周期序列的傅里叶级数变换对$$\widetilde X(k)=DFS[\widetilde x(n)]=\sum_{n=0}^{N-1}\widetilde x(n)e^{-j\frac{2\pi}Nkn}$$$$\widetilde x(n)=IDFS[\widetilde X(k)]=\frac1N\sum_{k=0}^{N-1}\widetilde X(k)e^{j\frac{2\pi}Nnk}$$其中$DFS[\cdot]$表示傅里叶级数正变换，$IDFS[\cdot]$表示傅里叶级数逆变换。令$$W_N=e^{-j\frac{2\pi}N},$$并称之为$W_N$因子，变换对变为$$\widetilde X(k)=DFS[\widetilde x(n)]=\sum_{n=0}^{N-1}\widetilde x(n)W_N^{kn}$$$$\widetilde x(n)=IDFS[\widetilde X(k)]=\frac1N\sum_{k=0}^{N-1}\widetilde X(k)W_N^{nk}$$
+为了更清楚地表示第三种傅里叶变换的周期性，在符号上加以周期性标识“$\sim$”：$$\widetilde X(e^{j\omega})=\sum_{n=-\infty}^\infty x(n)e^{-j\omega n}\rightarrow\sum_{n=0}^{N-1}x(n)e^{i\omega n}.$$离散周期序列的傅里叶级数变换对$$\widetilde X(k)=\mathsf{DFS}[\widetilde x(n)]=\sum_{n=0}^{N-1}\widetilde x(n)e^{-j\frac{2\pi}Nkn}$$$$\widetilde x(n)=\mathsf{IDFS}[\widetilde X(k)]=\frac1N\sum_{k=0}^{N-1}\widetilde X(k)e^{j\frac{2\pi}Nnk}$$其中$\mathsf{DFS}[\cdot]$表示傅里叶级数正变换，$\mathsf{IDFS}[\cdot]$表示傅里叶级数逆变换。令$$W_N=e^{-j\frac{2\pi}N},$$并称之为$W_N$因子，变换对变为$$\widetilde X(k)=\mathsf{DFS}[\widetilde x(n)]=\sum_{n=0}^{N-1}\widetilde x(n)W_N^{kn}$$$$\widetilde x(n)=\mathsf{IDFS}[\widetilde X(k)]=\frac1N\sum_{k=0}^{N-1}\widetilde X(k)W_N^{nk}$$
 #### 离散傅里叶级数的主要性质
 ##### 线性特性
 周期皆等于N的离散周期序列$\widetilde x_1(n),\widetilde x_2(n)$：$$\widetilde x_3(n)=a\widetilde x_1(n)+b\widetilde x_2(n),$$$$\widetilde X_3(k)=a\widetilde X_1(k)+b\widetilde X_2(k).$$
 ##### 序列位移
-1. 时域移位$$DFS[\widetilde x(n+m)]=W_N^{-mk}\widetilde X(k).$$大于周期的移位和短于周期的移位在时域上不能区分。
-2. 频域移位$$IDFS[\widetilde X(k+l)]=W_N^{nl}\widetilde x(n).$$
+1. 时域移位$$\mathsf{DFS}[\widetilde x(n+m)]=W_N^{-mk}\widetilde X(k).$$大于周期的移位和短于周期的移位在时域上不能区分。
+2. 频域移位$$\mathsf{IDFS}[\widetilde X(k+l)]=W_N^{nl}\widetilde x(n).$$
 ##### 周期卷积特性
 1. 时域卷积$$\widetilde X_3(k)=\widetilde X_1(k)\cdot\widetilde X_2(k),$$$$\widetilde x_3(n)=\sum_{m=0}^{N-1}\widetilde x_1(m)\widetilde x_2(n-m)=\sum_{m=0}^{N-1}\widetilde x_2(m)\widetilde x_1(n-m).$$卷积过程仅限于一个周期以内，故称**圆周卷积**。
 2. 频域卷积$$\widetilde x_3(n)=\widetilde x_1(n)\widetilde x_2(n),$$$$\widetilde X_3(k)=\frac1N\sum_{l=0}^{N-1}\widetilde X_1(l)\widetilde X_2(k-l)=\frac1N\sum_{l=0}^{N-1}\widetilde X_2(l)\widetilde X_1(k-l).$$
 ## 离散傅里叶变换的定义
 ##### DFT只有N个独立的复值
-离散傅里叶变换(DFT)$$X(k)=DFT[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn}\qquad0\leqslant k\leqslant N-1$$离散傅里叶逆变换(IDFT)$$x(n)=IDFT[X(k)]=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-kn}\qquad0\leqslant n\leqslant N-1$$
+离散傅里叶变换(DFT)$$X(k)=\mathsf{DFT}[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn}\qquad0\leqslant k\leqslant N-1$$离散傅里叶逆变换(IDFT)$$x(n)=\mathsf{IDFT}[X(k)]=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-kn}\qquad0\leqslant n\leqslant N-1$$
 ##### DFT隐含周期性
 ##### 周期序列与有限长序列的本质联系
 ##### DFT是连续傅里叶变换的近似且便于计算机计算
@@ -62,11 +62,14 @@ $$x(0)=\frac1N\sum_{k=0}^{N-1}X(k).$$
 将$x(n)$以N为周期作周期延拓$$\widetilde x(n)=x((n))_N$$序列$x(n)$的圆周移位$$x_1(n)=x((n+m))_NR_ N(n)$$因此得名圆周移位、循环移位。
 ##### 有限长序列圆周移位定理
 1. 时间移位定理$$\widetilde x_1(n)=\widetilde x(n+m),$$$$\widetilde X_1(k)=W_N^{-km}\widetilde X(k).$$
-2. 频率移位定理（调制定理）$$IDFT[X((k+l))_NR_ N(k)]=W_N^{nl}x(n).$$
+2. 频率移位定理（调制定理）$$\mathsf{IDFT}[X((k+l))_NR_ N(k)]=W_N^{nl}x(n).$$
 #### 圆周卷积（循环卷积）及其与有限长序列的线性卷积关系
 ##### 圆周卷积定理
 $$X_3(k)=X_1(k)X_2(k),$$$$x_3(n)=\sum_{m=0}^{N-1}x_1(m)x_2((n-m))_NR_ N(n)=x_1(n)\circledast x_2(n).$$
 ##### 圆周卷积和线性卷积的关系
+周期卷积是线性卷积以L为周期的周期延拓，圆周卷积就是周期卷积取主值序列。不产生混淆的条件是$$L\geqslant N+M-1.$$
+##### 圆周卷积在信号处理中的应用——重叠相加法与重叠保留法
+快速卷积法
 #### 圆周相关（圆周相关）定理
 #### 帕斯维尔定理
 #### 离散傅里叶变换的奇偶性及对称性
