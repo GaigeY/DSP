@@ -31,18 +31,42 @@
 1. 时域移位$$DFS[\widetilde x(n+m)]=W_N^{-mk}\widetilde X(k).$$大于周期的移位和短于周期的移位在时域上不能区分。
 2. 频域移位$$IDFS[\widetilde X(k+l)]=W_N^{nl}\widetilde x(n).$$
 ##### 周期卷积特性
-1. 时域卷积
+1. 时域卷积$$\widetilde X_3(k)=\widetilde X_1(k)\cdot\widetilde X_2(k),$$$$\widetilde x_3(n)=\sum_{m=0}^{N-1}\widetilde x_1(m)\widetilde x_2(n-m)=\sum_{m=0}^{N-1}\widetilde x_2(m)\widetilde x_1(n-m).$$卷积过程仅限于一个周期以内，故称**圆周卷积**。
+2. 频域卷积$$\widetilde x_3(n)=\widetilde x_1(n)\widetilde x_2(n),$$$$\widetilde X_3(k)=\frac1N\sum_{l=0}^{N-1}\widetilde X_1(l)\widetilde X_2(k-l)=\frac1N\sum_{l=0}^{N-1}\widetilde X_2(l)\widetilde X_1(k-l).$$
 ## 离散傅里叶变换的定义
+##### DFT只有N个独立的复值
+离散傅里叶变换(DFT)$$X(k)=DFT[x(n)]=\sum_{n=0}^{N-1}x(n)W_N^{kn}\qquad0\leqslant k\leqslant N-1$$离散傅里叶逆变换(IDFT)$$x(n)=IDFT[X(k)]=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-kn}\qquad0\leqslant n\leqslant N-1$$
+##### DFT隐含周期性
+##### 周期序列与有限长序列的本质联系
+##### DFT是连续傅里叶变换的近似且便于计算机计算
 ## 离散傅里叶变换的性质
 #### 线性特性
+$$x_3(n)=ax_1(n)+bx_2(n)$$$$X_3(k)=aX_1(k)+bX_2(k)$$注意！$N_3=\max[N_1,N_2].$
 #### 离散傅里叶逆变换的另一公式
+$$x(n)=\frac1N\left[\sum_{k=0}^{N-1}X^*(k)W_N^{-nk}\right]^*\qquad0\leqslant n\leqslant N-1$$
 #### 对称定理
+$$x(n)\rightarrow X(k),\qquad\frac1NX(n)\rightarrow x(k).$$
 #### 反转定理
+$$x(n)\rightarrow X(k),\qquad x(-n)\rightarrow X(-k).$$
 #### 序列的总和
+$$X(k)|_{k=0}=\sum_{n=0}^{N-1}x(n)W_N^{nk}|_{k=0}=\sum_{n=0}^{N-1}x(n).$$
 #### 序列的始值
+$$x(0)=\frac1N\sum_{k=0}^{N-1}X(k).$$
 #### 延长序列的离散傅里叶变换
+把序列$x(n),0\leqslant N-1$人为填充零值至$rN$，得到$$g(n)=\begin{cases}
+  x(n)&0\leqslant n\leqslant N-1\\
+  0&N\leqslant n\leqslant rN-1
+\end{cases}$$$g(n)$的离散傅里叶变换为$$G(k)=X(\frac kr).$$使得频谱更加细致。
 #### 序列的圆周位移
+##### 圆周移位
+将$x(n)$以N为周期作周期延拓$$\widetilde x(n)=x((n))_N$$序列$x(n)$的圆周移位$$x_1(n)=x((n+m))_NR_ N(n)$$因此得名圆周移位、循环移位。
+##### 有限长序列圆周移位定理
+1. 时间移位定理$$\widetilde x_1(n)=\widetilde x(n+m),$$$$\widetilde X_1(k)=W_N^{-km}\widetilde X(k).$$
+2. 频率移位定理（调制定理）$$IDFT[X((k+l))_NR_ N(k)]=W_N^{nl}x(n).$$
 #### 圆周卷积（循环卷积）及其与有限长序列的线性卷积关系
+##### 圆周卷积定理
+$$X_3(k)=X_1(k)X_2(k),$$$$x_3(n)=\sum_{m=0}^{N-1}x_1(m)x_2((n-m))_NR_ N(n)=x_1(n)\circledast x_2(n).$$
+##### 圆周卷积和线性卷积的关系
 #### 圆周相关（圆周相关）定理
 #### 帕斯维尔定理
 #### 离散傅里叶变换的奇偶性及对称性
