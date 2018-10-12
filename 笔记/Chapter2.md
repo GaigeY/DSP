@@ -2,7 +2,23 @@
 # 第二章 离散时间信号和系统分析基础
 ## 连续时间信号的取样及取样定理
 #### 信号的取样
+取样器输出一列重复周期为$T$，宽度为$\tau$的脉冲穿，幅度被原来的连续时间信号所调制。这样的信号叫**取样信号**。
+
+$x_a(t)$代表连续时间信号，$p(t)$是周期取样脉冲，$\hat x(t)$表示取样信号：$$\hat x(t)=x_a(t)p(t)$$冲激函数序列$$p_\delta(t)=\sum_{n=-\infty}^\infty\delta(t-nT).$$理想冲激取样信号$$\hat x(t)=x_a(t)\sum_{n=-\infty}^\infty \delta(t-nT)=\sum_{n=-\infty}^\infty x_a(nT)\delta(t-nT).$$
 #### 取样定理
+取样频率$f_s=1/T$，取样角频率$\Omega_s=2\pi/T$。
+
+> 冲激函数序列$$p_\delta(t)=\sum_{n=-\infty}^\infty\delta(t-nT)=\frac1T\sum_{m=-\infty}^\infty e^{jm\frac{2\pi}Tt},$$
+> 理想取样信号$\hat x(t)$的频谱为其傅里叶变换$$\hat X(j\Omega)=\int_{-\infty}^\infty\hat x(t)e^{-j\Omega t}dt=\int_{-\infty}^\infty x_a(t)p_\delta(t)e^{-j\Omega t}dt$$$$=\frac1T\sum_{n=-\infty}^\infty\int_{-\infty}^\infty x_a(t)e^{-j(\Omega-m\Omega_s)t}dt$$
+> $x_a(t)$的傅里叶变换$$\hat X_a(j\Omega)=\int_{-\infty}^\infty x_a(t)e^{-j\Omega t}.$$
+> $$\hat X(j\Omega)=\frac1T\sum_{n=-\infty}^\infty X_a[j(\Omega-m\Omega_s)]=\frac1T\sum_{n=-\infty}^\infty X_a\left[j\left(\Omega-m\frac{2m}T\right)\right]$$上式是$X_a(j\Omega)$的周期延拓。
+
+###### 山农（Shannon）取样定理
+信号最高频率$\Omega_h$和取样角频率$\Omega_s$的关系：$$\Omega_s\geqslant2\Omega_h.$$取样频率必须大于原信号最高频率两倍。
+
+一般可取$$\Omega_s=(2.5\sim3)\Omega_h.$$
+
+非零脉宽取样的频谱，幅度按包络$(\sin m\pi\tau/T)/(m\pi\tau/T)$的规律下降。
 #### 折叠频率与奈奎斯特（Nyquist）频率
 #### 信号的恢复
 #### 取样内插公式
