@@ -105,26 +105,48 @@ $$s=\sum_{n=-\infty}^\infty|h(n)|<\infty\qquad h(n)=0\qquad n<0$$单位取样响
 各个$y(n-k)$型项都是一阶且不相乘，系数不含$n$。
 ## 四、离散时间信号和系统的频域分析
 ### 系统的频率相应
-
+设差分方程描述的是复指数序列$$x(n)=Ae^{j(\omega n+\phi_x)}\qquad-\infty<n<\infty$$$\omega$是数字域频率。有变化式$$x(n-r)=e^{-j\omega r}\cdot x(n).$$差分方程转换为$$\sum_{k=0}^Na_ke^{-j\omega k}\cdot y(n)=\sum_{r=0}^Mb_re^{-j\omega r}x(n)$$离散时间系统的**频率响应**$$H(e^{j\omega})=\frac{\sum_{r=0}^Mb_re^{-j\omega r}}{\sum_{k=0}^Na_ke^{-j\omega k}}=\frac{y(n)}{x(n)}=\frac{Be^{j\phi_y}}{Ae^{j\phi_x}}.$$
+系统的频率响应$H(e^{j\omega})$描述了系统对不同$\omega$的复指数序列不同传输能力。
 ### 系统频率相应的两个性质
+1. $H(e^{j\omega})$是$\omega$的连续函数。
+2. $H(e^{j\omega})$是$\omega$的周期性函数，周期为$2\pi$。一般只取$\omega$在$0\sim2\pi$的频率响应。
 ### 系统频率相应与单位取样响应的关系
+$$H(e^{j\omega})=\sum_{n=-\infty}^\infty h(n)e^{-j\omega n}$$**离散时间线性非时变系统** 的频率响应$H(e^{j\omega})$就是系统单位取样响应$h(n)$的傅氏变换，是$h(n)$的频谱。
 ### 序列的频域表示法
+$$h(n)=\frac1{2\pi}\int_{-\infty}^\infty H(e^{j\omega})e^{j\omega n}d\omega,$$$$H(e^{j\omega})=\sum_{n=-\infty}^\infty h(n)e^{-j\omega n}.$$
+注意：$\hat X(j\Omega)=X(e^{j\omega}),$二者等价。
 ### 输出序列与输入序列的傅氏变换间的关系
+$$y(n)=x(n)* h(n),$$$$Y(k)=X(k)H(k).$$
 ## 五、傅里叶变换的对称性质
 ### 几个术语
+##### 序列的共轭对称和共轭反对称
+共轭对称序列$x_e(n)=x_e^*(-n)$，共轭反对称序列$x_0(n)=-x_0^*(-n)$。有公式：$$x_e(n)=\frac12[x(n)+x^*(-n)],$$$$x_0(n)=\frac12[x(n)-x^*(-n)].$$
+##### 偶序列与奇序列
+实序列中，偶序列$x_e(n)=x_e(-n)$，奇序列$x_0(n)=-x_0(-n)$。
+##### 傅里叶变换的共轭对称与共轭反对称
+共轭对称$X_e(e^{j\omega})=X_e^*(e^{-j\omega})$，共轭反对称$X_0(e^{j\omega})=-X_0^*(e^{-j\omega})$。同理有$$X_e(e^{j\omega})=\frac12[X(e^{j\omega})+X(e^{-j\omega})],$$$$X_0(e^{j\omega})=\frac12[X(e^{j\omega})-X(e^{-j\omega})].$$
 ### 傅里叶变换的对称性质
+1. $x(n)$的傅里叶变换为$X(e^{j\omega})$，则$x^*(n)$的傅里叶变换是$X^*(e^{-j\omega})$，$x^*(-n)$的傅里叶变换是$X^*(e^{j\omega})$。
+2. $x(n)$的傅里叶变换为$X(e^{j\omega})$，则$\mathbf{Re}[x(n)]$的傅里叶变换为$X_e(e^{j\omega})$，$j\mathbf{Im}[x(n)]$的傅里叶变换为$X_0(e^{j\omega})$。
 ## 六、z变换
 ### z变换的定义
+$$X(z)=\sum_{n=-\infty}^\infty x(n)z^{-n}.$$
 ### z变换的收敛域
+$$\sum_{n=-\infty}^\infty|x(n)z^{-n}|<\infty.$$一般来说收敛域是环带区域$$R_{x-}<|z|<R_{x+}.$$
 ## 七、拉氏变换、傅氏变换及z变换间关系
 ### 序列的z变换与Laplaca变换间关系
 ### 序列的z变换与Fourier变换间关系
 ### 序列的傅氏变换与拉氏变换（双边）的关系
 ## 八、逆z变换
 ### 逆z变换公式
+$$x(n)=\frac1{2\pi j}\oint_cX(z)z^{n-1}dz.$$
 ### 逆z变换的三种常用方法
+##### 留数定理解法
+##### 幂级数展开法
+##### 部分分式展开法
 ## 九、z变换的定理与性质
 ### 线性特性
+$$\mathscr Z[x(n)]=X(z)\qquad R_{x-}<|z|<R_{x+}$$$$\mathscr Z[y(n)]=Y(z)\qquad R_{y-}<|z|<R_{y+}$$$$\mathscr Z[ax(n)+by(n)]=aX(z)+bY(z)\qquad R_-<|z|<R_+$$
 ### 序列的移位
 ### 乘指数序列
 ### $X(z)$的微分
