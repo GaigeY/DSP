@@ -148,21 +148,32 @@ $$x(n)=\frac1{2\pi j}\oint_cX(z)z^{n-1}dz.$$
 ### 线性特性
 $$\mathscr Z[x(n)]=X(z)\qquad R_{x-}<|z|<R_{x+}$$$$\mathscr Z[y(n)]=Y(z)\qquad R_{y-}<|z|<R_{y+}$$$$\mathscr Z[ax(n)+by(n)]=aX(z)+bY(z)\qquad R_-<|z|<R_+$$
 ### 序列的移位
+$$\mathscr Z[x(n)]=X(z)\qquad R_{x-}<|z|<R_{x+}$$$$\mathscr Z[x(n+n_0)]=z^{n_0}X(z)\qquad R_{x-}<|z|<R_{x+}$$
 ### 乘指数序列
+$$\mathscr Z[a^nx(n)]=X(a^{-1}z)\qquad|a|R_{x-}<|z|<|a|R_{x+}$$
 ### $X(z)$的微分
-### 附属序列的共轭
+$$\mathscr Z[nx(n)]=-z\frac{\mathbf dX(z)}{\mathbf dz}$$
+### 复数序列的共轭
+$$\mathscr Z[x(n)]=X(z)\qquad R_{x-}<|z|<R_{x+}$$$$\mathscr Z[x^*(n)]=X^*(z^* )\qquad R_{x-}<|z|<R_{x+}$$
 ### 初值定理
+对$n<0,x(n)=0$的因果序列：$$x(0)=\lim_{z\rightarrow\infty}X(z)$$
 ### 终值定理
+因果序列极点在单位圆内，$z=1$只能有一阶极点。$$\lim_{n\rightarrow\infty}x(n)=\lim_{z\rightarrow1}(z-1)X(z)$$也可以用留数表示$$x(\infty)=\mathbf{Res}[X(z),1]$$
 ### 序列的卷积
+$$w(n)=x(n)* y(n)$$$$W(z)=X(z)Y(z)\qquad R_-<|z|<R_+$$
 ### 序列乘积的z变换——复卷积定理
+$$w(n)=x(n)y(n),$$$$W(z)=\frac1{w\pi j}\oint_{c_1}X(v)Y(\frac zv)v^{-1}\mathbf dv\qquad R_{x-}R_{y-}<|z|<R_{x+}R_{y+}$$
 ### 帕斯维尔（Parseval）定理
+$$R_{x-}R_{y-}<1\qquad R_{x+}R_{y+}>1$$$$\sum_{n=-\infty}^\infty x(n)y^*(n)=\frac1{2\pi j}\oint_cX(v)Y^*\left(\frac1{v^* }\right)v^{-1}\mathbf dv$$
 ## 十、单边z变换及双、单边z变换的应用场景
 ### 单边z变换的定义
 ### 单边逆z变换
 ### 双、单边z变换的应用场合
 ## 十一、系统函数
 ### 系统函数的定义
+$$H(z)=\frac{Y(z)}{X(z)}.$$系统函数$H(z)$是单位取样响应$h(n)$的z变换$$H(z)=\mathscr Z[h(n)],$$$$h(n)=\mathscr Z^{-1}[H(z)].$$
 ### 系统函数和差分方程的关系
+差分方程一般形式$$\sum_{k=0}^Na_ky(n-k)=\sum_{r=0}^Mb_rx(n-r),$$$$\sum_{k=0}^Na_kz^{-k}Y(z)=\sum_{r=0}^Mb_rz^{-r}X(z).$$$$H(z)=\frac{Y(z)}{X(z)}=\frac{\sum_{r=0}^Mb_rz^{-r}}{\sum_{k=0}^Na_kz^{-k}}.$$
 ### 系统函数的收敛域
 ### 系统频率响应的几何确定法
 ### 无限长单位脉冲响应（IIR）系统与有限长单位脉冲响应（FIR）系统
