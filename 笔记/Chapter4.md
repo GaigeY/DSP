@@ -13,9 +13,15 @@
 着重讨论算法原理，并提供了实现算法的详细细节。
 ## 一、直接计算DFT的问题和改善DFT运算效率的基本途径
 ### 直接计算DFT的问题
+有限列长为N的序列$x(n)$的DFT对为$$X(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk}\qquad k=0,1,...,N-1$$$$x(n)=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-nk}\qquad n=0,1,...,N-1$$DFT实际计算方式为$$X(k)=\sum_{n=0}^{N-1}\{[\mathbf{Re}x(n)\mathbf{Re}W_N^{nk}-\mathbf{Im}x(n)\mathbf{Im}W_N^{kn}]+$$$$\qquad\qquad j[\mathbf{Re}x(n)\mathbf{Im}W_N^{kn}+\mathbf{Im}x(n)\mathbf{Re}W_N{kn}]\}$$运算复杂度为$4N^2$。
 ### 改善DFT运算效率的基本途径
+$W_N^{kn}$的固有特性：
+1. $W_N^{kn}$的对称性$$W_N^{k(N-n)}=W_N^{-kn}=(W_N^{kn})^* .$$
+2. $W_N^{kn}$的周期性$$W_N^{kn}=W_N^{k(n+N)}=W_N^{(k+N)n}.$$
+
 ## 二、按时间抽取（DIT）的FFT算法（库利-图基算法）
 ### 算法原理
+
 ### 按时间抽取的FFT算法与直接计算DFT运算量的比较
 ### 按时间抽取的FFT算法的特点
 ### 按时间抽取的FFT算法的若干变体
