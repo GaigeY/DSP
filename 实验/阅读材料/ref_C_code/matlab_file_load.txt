@@ -1,0 +1,37 @@
+问题1：如何在matlab中读取数据文件
+
+将如下格式的数据文件data.txt装载到内存中，并生成一个二维数组
+
+1	0.0002	2
+2	0.0004	3
+3 	0.3	4
+
+输入命令“load -ascii data.txt”,此时数组data已经存在，输入命令“data”可以察看data
+
+>> load -ascii data.txt
+>> data
+
+data =
+
+    1.0000    0.0002    2.0000
+    2.0000    0.0004    3.0000
+    3.0000    0.3000    4.0000
+
+>> 
+
+
+问题2：如何将数组的数据保存到数据文件？
+Use the Save command.
+
+Save the data in ASCII form using the save command with the -ascii option. For example,
+
+A = rand(4,3);
+
+save temp.dat A -ascii
+
+creates an ASCII file called temp.dat containing
+
+1.3889088e-001  2.7218792e-001  4.4509643e-001
+2.0276522e-001  1.9881427e-001  9.3181458e-001
+1.9872174e-001  1.5273927e-002  4.6599434e-001
+6.0379248e-001  7.4678568e-001  4.1864947e-001
