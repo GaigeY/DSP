@@ -13,16 +13,20 @@
 着重讨论算法原理，并提供了实现算法的详细细节。
 ## 一、直接计算DFT的问题和改善DFT运算效率的基本途径
 ### 直接计算DFT的问题
-有限列长为N的序列$x(n)$的DFT对为$$X(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk}\qquad k=0,1,...,N-1$$$$x(n)=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-nk}\qquad n=0,1,...,N-1$$DFT实际计算方式为$$X(k)=\sum_{n=0}^{N-1}\{[\mathbf{Re}x(n)\mathbf{Re}W_N^{nk}-\mathbf{Im}x(n)\mathbf{Im}W_N^{kn}]+$$$$\qquad\qquad j[\mathbf{Re}x(n)\mathbf{Im}W_N^{kn}+\mathbf{Im}x(n)\mathbf{Re}W_N{kn}]\}$$运算复杂度为$4N^2$。
+有限列长为N的序列$x(n)$的DFT对为$$X(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk}\qquad k=0,1,...,N-1$$$$x(n)=\frac1N\sum_{k=0}^{N-1}X(k)W_N^{-nk}\qquad n=0,1,...,N-1$$完成全部DFT的总计算量为$N^2$次复数相乘及$N(N-1)$次复数相加。
+
+DFT实际计算方式为$$X(k)=\sum_{n=0}^{N-1}\{[\mathbf{Re}x(n)\mathbf{Re}W_N^{nk}-\mathbf{Im}x(n)\mathbf{Im}W_N^{kn}]+$$$$\qquad\qquad j[\mathbf{Re}x(n)\mathbf{Im}W_N^{kn}+\mathbf{Im}x(n)\mathbf{Re}W_N{kn}]\}$$运算复杂度为$4N^2$。
 ### 改善DFT运算效率的基本途径
 $W_N^{kn}$的固有特性：
 1. $W_N^{kn}$的对称性$$W_N^{k(N-n)}=W_N^{-kn}=(W_N^{kn})^* .$$
 2. $W_N^{kn}$的周期性$$W_N^{kn}=W_N^{k(n+N)}=W_N^{(k+N)n}.$$
-
 ## 二、按时间抽取（DIT）的FFT算法（库利-图基算法）
 ### 算法原理
-
+方便讨论，设$N=2^\nu$，这种$N$为2的整数幂的FFT，也称基-2FFT。定义$$X(k)=\sum_{n=0}^{N-1}x(n)W_N^{nk}\qquad k=0,1,...,N-1$$分成奇偶子序列$$\begin{cases}x(2r)=x_1(r)\\x(2r+1)=x_2(r)\end{cases}\qquad r=0,1,...\frac N2-1$$记$X_1(k)$和$X_2(k)$分别是$x_1(r)$和$x_2(r)$的$N/2$点DFT$$X_1(k)=\sum_{r=0}^{N/2-1}x_1(r)W_{N/2}^{rk}=\sum_{r=0}^{N/2-1}x(2r)W_{N/2}^{rk}\\X_2(k)=\sum_{r=0}^{N/2-1}x_2(r)W_{N/2}^{rk}=\sum_{r=0}^{N/2-1}x(2r+1)W_{N/2}^{rk}$$$X(k)$表达为2部分：$$\begin{cases}X(k)=X_1(k)+W_N^kX_2(k)\\X(k+\frac N2)=X_1(k+\frac N2)-W_N^kX_2(k+\frac N2)\end{cases}\qquad k=0,1,...,\frac N2-1$$
+以此二分法继续下分，可得到一个按级分解的“按时间抽取法”。
 ### 按时间抽取的FFT算法与直接计算DFT运算量的比较
+总的运算次数：复数相乘$$m_F=\nu N/2=0.5N\log_2N,$$复数相加$$a_F=N\nu=N\log_2N.$$
+直接算法对FFT算法的计算时间之比近似为$$\frac {N^2}{N\nu/2}=\frac{2N}\nu=\frac{2N}{\log_2N}.$$
 ### 按时间抽取的FFT算法的特点
 ### 按时间抽取的FFT算法的若干变体
 ## 三、按频率抽取（DIF）的FFT算法（桑德-图基算法）
