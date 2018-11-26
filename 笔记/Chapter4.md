@@ -32,7 +32,7 @@ DIT算法的输入是反序，输出是正序的。
 ### 按时间抽取的FFT算法的若干变体
 ## 三、按频率抽取（DIF）的FFT算法（桑德-图基算法）
 ### 算法原理
-设$N=2^\nu$，令$$\begin{cases}x_1(n)=x(n)+x(n+\frac N2)\\x_2(n)=[x(n)-x(n+\frac N2)]\end{cases}\qquad n=0,1,...,\frac N2-1$$将$N$点DFT按频率$k$的奇偶分解成两个新序列的$N/2$点DFT$$\begin{cases}X(2r)=\sum_{n=0}^{N/2-1}x_1(n)W_{N/2}^{nr}\\X(2r+1)=\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr}\end{cases}\qquad r=0,1,...,\frac N2-1$$以此类推，得到降级分解“按频率抽取法”。
+设$N=2^\nu$，令$$\begin{cases}x_1(n)=x(n)+x(n+\frac N2)\\x_2(n)=x(n)-x(n+\frac N2)\end{cases}\qquad n=0,1,...,\frac N2-1$$将$N$点DFT按频率$k$的奇偶分解成两个新序列的$N/2$点DFT$$\begin{cases}X(2r)=\sum_{n=0}^{N/2-1}x_1(n)W_{N/2}^{nr}\\X(2r+1)=\sum_{n=0}^{N/2-1}x_2(n)W_{N/2}^{nr}\end{cases}\qquad r=0,1,...,\frac N2-1$$以此类推，得到降级分解“按频率抽取法”。
 ### 时间抽取算法与频率抽取算法的比较
 DIT与DIF存在两点差别：
 1) DIF的输入正好是自然顺序，输出是范旭顺序，DIT正好相反。
